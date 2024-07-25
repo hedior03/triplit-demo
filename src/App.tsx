@@ -3,6 +3,8 @@ import { useQuery } from '@triplit/react';
 import { triplit } from '../triplit/client.ts';
 import { Todo } from './components/Todo.tsx';
 import { ConnectionStatus } from './components/ConnectionStatus.tsx';
+import { Column } from './components/colum.tsx';
+import { DndContext } from '@dnd-kit/core';
 
 function useTodos() {
   const todosQuery = triplit.query('todos').order('created_at', 'DESC');
@@ -44,22 +46,25 @@ export default function App() {
         </div>
       )}
       <div className="flex flex-col gap-4 bg-gray-50 p-20">
-        <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-red-300 px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
-          This is an agency agile card, where this represents value for a
-          project
-        </button>
-        <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#ffff99] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
-          This is an agency agile card, where this represents value for a
-          project
-        </button>
-        <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#72e5e5] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
-          This is an agency agile card, where this represents value for a
-          project
-        </button>
-        <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#8af6c0] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
-          This is an agency agile card, where this represents value for a
-          project
-        </button>
+        <DndContext>
+          <Column id="column-1"></Column>
+          <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-red-300 px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
+            This is an agency agile card, where this represents value for a
+            project
+          </button>
+          <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#ffff99] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
+            This is an agency agile card, where this represents value for a
+            project
+          </button>
+          <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#72e5e5] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
+            This is an agency agile card, where this represents value for a
+            project
+          </button>
+          <button className="line-clamp-6 h-auto max-h-64 min-h-48 w-72 overflow-clip text-ellipsis bg-[#8af6c0] px-4 py-2 text-left text-2xl font-bold text-gray-800 shadow-lg">
+            This is an agency agile card, where this represents value for a
+            project
+          </button>
+        </DndContext>
       </div>
     </div>
   );
